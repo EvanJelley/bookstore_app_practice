@@ -1,20 +1,11 @@
 {% extends '_base.html' %}
+{% load static %}
+
 
 {% block title %}Home{% endblock title %}
 
 {% block content %}
     <h1>Welcome to the Bookstore</h1>
-    {% if user.is_authenticated %}
-        <p>Welcome, {{ user.username }}!</p>
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'home' %}">
-            <button type="submit">Logout</button>
-        </form>
-    {% else %}
-        <p>You are not logged in</p>
-        <button><a href="{% url 'login' %}">Login</a></button>
-        <button><a href="{% url 'signup' %}">Signup</a></button>
-    {% endif %}
+    <img class="bookcover" src="{% static 'images/dfp.jpeg' %}" alt="Django for Professionals">
     <p>Check out our selection of books!</p>
 {% endblock content %}
